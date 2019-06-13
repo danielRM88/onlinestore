@@ -29,7 +29,8 @@ const products = (state = initialState, action) => {
         catalog: {
           list: [],
           loading: action.payload.loading,
-          error: undefined
+          error: undefined,
+          search: action.payload.search
         }
       };
     case GET_PRODUCTS_SUCCESS:

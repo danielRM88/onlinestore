@@ -15,7 +15,7 @@ class Products extends Component {
               return (
                 <div key={i} className="col-md-12">
                   <Product
-                    img={product.img}
+                    img={product.image}
                     title={product.title}
                     description={product.description}
                     remove={false}

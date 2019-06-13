@@ -25,7 +25,9 @@ function App() {
           exact
           path="/products"
           render={props => {
-            store.dispatch(getProductsRequest());
+            store.dispatch(
+              getProductsRequest(store.getState().products.catalog.search)
+            );
             return <ProductsContainer />;
           }}
         />

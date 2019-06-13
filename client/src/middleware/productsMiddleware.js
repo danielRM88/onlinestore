@@ -55,7 +55,7 @@ function getProductsMiddlewareAction(next, action) {
     next(getProductsSuccess(response.products));
   };
 
-  getProductsService(action.search, 1, success, error);
+  getProductsService(action.payload.search, 1, success, error);
 }
 
 function getCartMiddlewareAction(next, action) {
