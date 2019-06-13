@@ -1,0 +1,19 @@
+{
+  "name": "onlinestore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielRM88/onlinestore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielRM88/onlinestore/issues"
+  },
+  "homepage": "https://github.com/danielRM88/onlinestore#readme"
+}

@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class Product extends Component {
   render() {
-    const { img, title, description } = this.props;
+    const {
+      img,
+      title,
+      description,
+      remove,
+      addToCart,
+      removeFromCart,
+      quantity
+    } = this.props;
     return (
       <div className="card bg-light border-secondary mb-3">
         <div className="row no-gutters">
@@ -14,9 +21,22 @@ class Product extends Component {
             <div className="card-body">
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
-              <Link to="" className="btn btn-primary">
-                Add to cart
-              </Link>
+              {quantity !== undefined ? (
+                <p class="card-text">
+                  <small class="text-muted">Quantity: {quantity}</small>
+                </p>
+              ) : (
+                <p />
+              )}
+              {remove ? (
+                <button className="btn btn-danger" onClick={removeFromCart}>
+                  Remove from cart
+                </button>
+              ) : (
+                <button className="btn btn-primary" onClick={addToCart}>
+                  Add to cart
+                </button>
+              )}
             </div>
           </div>
         </div>

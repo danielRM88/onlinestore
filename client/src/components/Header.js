@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header({ match }) {
+function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to="/" className="navbar-brand">
@@ -48,7 +48,9 @@ function Header({ match }) {
         </form>
         <ul className="navbar-nav">
           <li className="nav-item nav-link">
-            <button className="btn btn-primary my-2 my-sm-0">Cart</button>
+            <Link to="/cart" className="btn btn-primary my-2 my-sm-0">
+              Cart
+            </Link>
           </li>
         </ul>
       </div>

@@ -3,7 +3,7 @@ import Product from "./Product";
 
 class Products extends Component {
   render() {
-    const { list, loading } = this.props;
+    const { list, loading, addToCart } = this.props;
     if (loading) {
       return <div>Loading...</div>;
     } else {
@@ -18,6 +18,8 @@ class Products extends Component {
                     img={product.img}
                     title={product.title}
                     description={product.description}
+                    remove={false}
+                    addToCart={() => addToCart(product)}
                   />
                 </div>
               );

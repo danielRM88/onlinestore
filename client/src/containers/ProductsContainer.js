@@ -1,9 +1,9 @@
 import Products from "../components/Products";
-import { getProductsRequest } from "../actions/productsActions";
+import { addToCartRequest } from "../actions/productsActions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
-  const products = state.products;
+  const products = state.products.catalog;
   const loading = products.loading;
   const list = products.list;
 
@@ -14,8 +14,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onPageClick() {
-    dispatch(getProductsRequest());
+  addToCart(product) {
+    dispatch(addToCartRequest(product));
   }
 });
 

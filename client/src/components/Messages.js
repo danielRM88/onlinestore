@@ -16,10 +16,18 @@ class Messages extends Component {
             return (
               <div
                 key={index}
-                className={`alert alert-${classType} alert-dismissible`}
+                className={`alert alert-${classType} alert-dismissible fade show`}
                 role="alert"
               >
                 <p>{message}</p>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             );
           })}
