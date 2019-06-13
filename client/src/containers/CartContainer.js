@@ -3,6 +3,7 @@ import {
   getCartRequest,
   removeFromCartRequest
 } from "../actions/productsActions";
+import { createOrderRequest } from "../actions/ordersActions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
@@ -22,6 +23,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getCart(product) {
     dispatch(getCartRequest(product));
+  },
+  placeOrder(email) {
+    dispatch(createOrderRequest(email));
   }
 });
 

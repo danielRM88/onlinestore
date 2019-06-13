@@ -19,3 +19,31 @@ export function createOrderService(email, success, error) {
       }
     });
 }
+
+export function getOrdersService(page, success, error) {
+  request
+    .get("google.com")
+    .set("Content-Type", "application/json")
+    .send({ page: page })
+    .end((err, res) => {
+      if (err) {
+        error(err);
+      } else {
+        // const response = JSON.parse(res.text);
+        success({
+          orders: [
+            {
+              email: "rosato.daniel@gmail.com",
+              date: new Date().toString(),
+              total: 885
+            },
+            {
+              email: "rosato.daniel@gmail.com",
+              date: new Date().toString(),
+              total: 400
+            }
+          ]
+        });
+      }
+    });
+}

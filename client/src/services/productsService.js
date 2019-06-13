@@ -5,11 +5,11 @@ var config = {
 
 const server = config.serverUrl;
 
-export function getProductsService(page, success, error) {
+export function getProductsService(search, page, success, error) {
   request
     .get("google.com")
     .set("Content-Type", "application/json")
-    .query({ page: page })
+    .query({ search: search, page: page })
     .end((err, res) => {
       if (err) {
         error(err);

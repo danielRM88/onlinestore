@@ -3,7 +3,7 @@ import Product from "./Product";
 
 class Cart extends Component {
   render() {
-    const { list, loading, removeFromCart } = this.props;
+    const { list, loading, removeFromCart, placeOrder } = this.props;
     let total = 0;
     if (loading) {
       return <div>Loading...</div>;
@@ -31,25 +31,25 @@ class Cart extends Component {
               <p>Total: {total} USD</p>
             </div>
             <div className="col-md-4">
-              <form>
-                <div class="form-group">
-                  <label for="email" required>
+              <form onSubmit={() => placeOrder()}>
+                <div className="form-group">
+                  <label htmlFor="email" required>
                     Email address
                   </label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="email"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                     required
                   />
-                  <small id="emailHelp" class="form-text text-muted">
+                  <small id="emailHelp" className="form-text text-muted">
                     Please check that the information is correct!
                   </small>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                  Place order
+                <button type="submit" className="btn btn-primary">
+                  Complete Order
                 </button>
               </form>
             </div>

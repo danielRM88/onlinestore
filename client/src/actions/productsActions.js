@@ -11,11 +11,12 @@ export const REMOVE_FROM_CART_REQUEST = "REMOVE_FROM_CART_REQUEST";
 export const REMOVE_FROM_CART_SUCCESS = "REMOVE_FROM_CART_SUCCESS";
 export const REMOVE_FROM_CART_FAILURE = "REMOVE_FROM_CART_FAILURE";
 
-export function getProductsRequest() {
+export function getProductsRequest(search = null) {
   return {
     type: GET_PRODUCTS_REQUEST,
     payload: {
-      loading: true
+      loading: true,
+      search
     }
   };
 }

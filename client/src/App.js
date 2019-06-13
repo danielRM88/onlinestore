@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "./components/Header";
 import ProductsContainer from "./containers/ProductsContainer";
+import OrdersContainer from "./containers/OrdersContainer";
 import CartContainer from "./containers/CartContainer";
 import MessageContainer from "./containers/MessageContainer";
 import Orders from "./components/Orders";
 import Home from "./components/Home";
 import { getProductsRequest, getCartRequest } from "./actions/productsActions";
+import { getOrdersRequest } from "./actions/ordersActions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import store from "./store/store";
 import "./App.css";
@@ -33,7 +35,14 @@ function App() {
             return <CartContainer />;
           }}
         />
-        <Route path="/orders" component={Orders} />
+        <Route
+          exact
+          path="/orders"
+          render={props => {
+            store.dispatch(getOrdersRequest());
+            return <OrdersContainer />;
+          }}
+        />
       </div>
     </Router>
   );

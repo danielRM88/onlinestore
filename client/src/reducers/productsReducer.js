@@ -49,7 +49,6 @@ const products = (state = initialState, action) => {
         }
       };
     case GET_CART_REQUEST:
-      console.log(GET_CART_REQUEST);
       return {
         ...state,
         cart: {

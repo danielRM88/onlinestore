@@ -28,3 +28,34 @@ export function createOrderFailure(message) {
     }
   };
 }
+
+export const GET_ORDERS_REQUEST = "GET_ORDERS_REQUEST";
+export const GET_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";
+export const GET_ORDERS_FAILURE = "GET_ORDERS_FAILURE";
+
+export function getOrdersRequest() {
+  return {
+    type: GET_ORDERS_REQUEST,
+    payload: {
+      loading: true
+    }
+  };
+}
+export function getOrdersSuccess(orders) {
+  return {
+    type: GET_ORDERS_SUCCESS,
+    payload: {
+      orders,
+      loading: false
+    }
+  };
+}
+export function getOrdersFailure(message) {
+  return {
+    type: GET_ORDERS_FAILURE,
+    payload: {
+      message,
+      loading: false
+    }
+  };
+}

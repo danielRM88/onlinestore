@@ -22,8 +22,8 @@ class Product extends Component {
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
               {quantity !== undefined ? (
-                <p class="card-text">
-                  <small class="text-muted">Quantity: {quantity}</small>
+                <p className="card-text">
+                  <small className="text-muted">Quantity: {quantity}</small>
                 </p>
               ) : (
                 <p />
