@@ -15,15 +15,15 @@ class Cart extends Component {
           <div className="row">
             <div className="col-md-8">
               {list.map((product, i) => {
-                total += product.price * product.quantity;
+                total += product.price * 1;
                 return (
                   <div key={i} className="col-md-12">
                     <Product
-                      img={product.img}
+                      img={product.image}
                       title={product.title}
                       description={product.description}
                       remove={true}
-                      removeFromCart={() => removeFromCart(product)}
+                      removeFromCart={() => removeFromCart(product.id)}
                       quantity={product.quantity}
                     />
                   </div>

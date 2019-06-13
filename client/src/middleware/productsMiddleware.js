@@ -5,6 +5,7 @@ import {
   removeFromCartService
 } from "../services/productsService";
 import {
+  getProductsRequest,
   getProductsSuccess,
   getProductsFailure,
   getCartRequest,
@@ -23,7 +24,6 @@ import {
 } from "../actions/productsActions";
 import store from "../store/store";
 import { setMessage } from "../actions/messagesActions";
-import { hashHistory } from "react-router-dom";
 
 const productsMiddleware = store => next => action => {
   next(action);
@@ -80,9 +80,10 @@ function addToCartMiddlewareAction(next, action) {
   const success = response => {
     next(setMessage([response.message], "success"));
     next(addToCartSuccess(response));
+    store.dispatch(getProductsRequest());
   };
 
-  addToCartService(1, success, error);
+  addToCartService(action.payload.productId, success, error);
 }
 
 function removeFromCartMiddlewareAction(next, action) {
@@ -97,7 +98,7 @@ function removeFromCartMiddlewareAction(next, action) {
     store.dispatch(getCartRequest());
   };
 
-  removeFromCartService(1, success, error);
+  removeFromCartService(action.payload.productId, success, error);
 }
 
 export default productsMiddleware;

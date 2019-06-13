@@ -32,5 +32,39 @@ module.exports = {
       .catch(error => {
         res.status(400).send(error);
       });
+  },
+  cart(req, res) {
+    return Product.findAll({
+      where: { cart: true },
+      order: [["title", "DESC"]]
+    })
+      .then(products => res.status(200).send({ products }))
+      .catch(error => {
+        res.status(400).send(error);
+      });
+  },
+  addToCart(req, res) {
+    return Product.update(
+      {
+        cart: true
+      },
+      { where: { id: req.params.productId } }
+    )
+      .then(product =>
+        res.status(201).send({ message: "Product added to cart" })
+      )
+      .catch(error => res.status(400).send(error));
+  },
+  removeFromCart(req, res) {
+    return Product.update(
+      {
+        cart: false
+      },
+      { where: { id: req.params.productId } }
+    )
+      .then(product =>
+        res.status(201).send({ message: "Product removed from cart" })
+      )
+      .catch(error => res.status(400).send(error));
   }
 };

@@ -41,12 +41,12 @@ export function getProductsFailure(message) {
   };
 }
 
-export function addToCartRequest(product) {
+export function addToCartRequest(productId) {
   return {
     type: ADD_TO_CART_REQUEST,
     payload: {
       loading: true,
-      product
+      productId
     }
   };
 }
@@ -71,12 +71,12 @@ export function addToCartFailure(message) {
   };
 }
 
-export function removeFromCartRequest(product) {
+export function removeFromCartRequest(productId) {
   return {
     type: REMOVE_FROM_CART_REQUEST,
     payload: {
       loading: true,
-      product
+      productId
     }
   };
 }

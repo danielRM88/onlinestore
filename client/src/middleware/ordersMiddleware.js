@@ -8,6 +8,7 @@ import {
   getOrdersSuccess,
   getOrdersFailure
 } from "../actions/ordersActions";
+import { getCartRequest } from "../actions/productsActions";
 import {
   CREATE_ORDER_REQUEST,
   GET_ORDERS_REQUEST
@@ -31,12 +32,14 @@ const ordersMiddleware = store => next => action => {
 
 function createOrderMiddlewareAction(next, action) {
   const error = err => {
-    next(setMessage([err.message], "error"));
+    next(setMessage([err.response.body.message], "error"));
     next(createOrderFailure(err.message));
   };
 
   const success = response => {
-    next(createOrderSuccess(response.products));
+    next(setMessage([response.message], "success"));
+    next(createOrderSuccess(response));
+    store.dispatch(getCartRequest());
   };
 
   createOrderService(action.payload.email, success, error);
@@ -52,7 +55,7 @@ function getOrdersMiddlewareAction(next, action) {
     next(getOrdersSuccess(response.orders));
   };
 
-  getOrdersService(1, success, error);
+  getOrdersService(success, error);
 }
 
 export default ordersMiddleware;

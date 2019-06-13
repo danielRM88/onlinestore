@@ -18,8 +18,9 @@ class Products extends Component {
                     img={product.image}
                     title={product.title}
                     description={product.description}
+                    cart={product.cart}
                     remove={false}
-                    addToCart={() => addToCart(product)}
+                    addToCart={() => addToCart(product.id)}
                   />
                 </div>
               );

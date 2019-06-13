@@ -23,7 +23,7 @@ class Orders extends Component {
                   return (
                     <tr key={i} className="col-md-12">
                       <td>{order.email}</td>
-                      <td>{order.date}</td>
+                      <td>{order.createdAt}</td>
                       <td>{order.total}</td>
                     </tr>
                   );

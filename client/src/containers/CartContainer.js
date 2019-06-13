@@ -18,8 +18,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeFromCart(product) {
-    dispatch(removeFromCartRequest(product));
+  removeFromCart(productId) {
+    dispatch(removeFromCartRequest(productId));
   },
   getCart(product) {
     dispatch(getCartRequest(product));

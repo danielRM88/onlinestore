@@ -6,6 +6,7 @@ class Product extends Component {
       img,
       title,
       description,
+      cart,
       remove,
       addToCart,
       removeFromCart,
@@ -28,14 +29,20 @@ class Product extends Component {
               ) : (
                 <p />
               )}
-              {remove ? (
-                <button className="btn btn-danger" onClick={removeFromCart}>
-                  Remove from cart
-                </button>
+              {!cart ? (
+                remove ? (
+                  <button className="btn btn-danger" onClick={removeFromCart}>
+                    Remove from cart
+                  </button>
+                ) : (
+                  <button className="btn btn-primary" onClick={addToCart}>
+                    Add to cart
+                  </button>
+                )
               ) : (
-                <button className="btn btn-primary" onClick={addToCart}>
-                  Add to cart
-                </button>
+                <p className="card-text">
+                  <small className="text-muted">Product added to cart</small>
+                </p>
               )}
             </div>
           </div>

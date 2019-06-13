@@ -1,13 +1,13 @@
 import request from "superagent";
 var config = {
-  serverUrl: "http://localhost:4500"
+  serverUrl: "http://localhost:4500/api"
 };
 
 const server = config.serverUrl;
 
 export function createOrderService(email, success, error) {
   request
-    .post("google.com")
+    .post(server + "/orders")
     .set("Content-Type", "application/json")
     .send({ email: email })
     .end((err, res) => {
@@ -20,30 +20,16 @@ export function createOrderService(email, success, error) {
     });
 }
 
-export function getOrdersService(page, success, error) {
+export function getOrdersService(success, error) {
   request
-    .get("google.com")
+    .get(server + "/orders")
     .set("Content-Type", "application/json")
-    .send({ page: page })
     .end((err, res) => {
       if (err) {
         error(err);
       } else {
-        // const response = JSON.parse(res.text);
-        success({
-          orders: [
-            {
-              email: "rosato.daniel@gmail.com",
-              date: new Date().toString(),
-              total: 885
-            },
-            {
-              email: "rosato.daniel@gmail.com",
-              date: new Date().toString(),
-              total: 400
-            }
-          ]
-        });
+        const response = JSON.parse(res.text);
+        success(response);
       }
     });
 }

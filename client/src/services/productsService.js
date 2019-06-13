@@ -23,71 +23,43 @@ export function getProductsService(search, page, success, error) {
 
 export function getCartService(page, success, error) {
   request
-    .get("google.com")
+    .get(server + "/products/cart")
     .set("Content-Type", "application/json")
     .query({ page: page })
     .end((err, res) => {
       if (err) {
         error(err);
       } else {
-        // const response = JSON.parse(res.text);
-        // success(response);
-        success({
-          products: [
-            {
-              title: "Nintendo Switch",
-              description: "Nintendo Hybrid Gaming Console",
-              price: 300,
-              quantity: 2,
-              img:
-                "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5670/5670100_sd.jpg"
-            },
-            {
-              title: "Playstation 4",
-              description: "Sonys Popular Gaming Console",
-              price: 250,
-              quantity: 1,
-              img:
-                "https://rukminim1.flixcart.com/image/704/704/jddesnk0/gamingconsole/n/z/t/1-playstation-4-ps4-slim-sony-dual-stock-4-controller-original-imaf2an4fvwy6ssm.jpeg?q=70"
-            }
-          ]
-        });
+        const response = JSON.parse(res.text);
+        success(response);
       }
     });
 }
 
-export function addToCartService(page, success, error) {
+export function addToCartService(productId, success, error) {
   request
-    .get("google.com")
+    .post(server + "/products/" + productId + "/add-to-cart")
     .set("Content-Type", "application/json")
-    .query({ page: page })
     .end((err, res) => {
       if (err) {
         error(err);
       } else {
-        // const response = JSON.parse(res.text);
-        // success(response);
-        success({
-          message: "Product added to cart"
-        });
+        const response = JSON.parse(res.text);
+        success(response);
       }
     });
 }
 
-export function removeFromCartService(page, success, error) {
+export function removeFromCartService(productId, success, error) {
   request
-    .get("google.com")
+    .post(server + "/products/" + productId + "/remove-from-cart")
     .set("Content-Type", "application/json")
-    .query({ page: page })
     .end((err, res) => {
       if (err) {
         error(err);
       } else {
-        // const response = JSON.parse(res.text);
-        // success(response);
-        success({
-          message: "Product removed from cart"
-        });
+        const response = JSON.parse(res.text);
+        success(response);
       }
     });
 }
