@@ -14,6 +14,7 @@ import {
 } from "../actions/productsActions";
 
 const initialState = {
+  toProducts: false,
   catalog: { list: [], loading: false, error: undefined },
   cart: { list: [], loading: false, error: undefined }
 };
@@ -24,6 +25,7 @@ const products = (state = initialState, action) => {
     case GET_PRODUCTS_REQUEST:
       return {
         ...state,
+        toProducts: true,
         catalog: {
           list: [],
           loading: action.payload.loading,
@@ -33,6 +35,7 @@ const products = (state = initialState, action) => {
     case GET_PRODUCTS_SUCCESS:
       return {
         ...state,
+        toProducts: false,
         catalog: {
           list: action.payload.list,
           loading: action.payload.loading,
@@ -42,6 +45,7 @@ const products = (state = initialState, action) => {
     case GET_PRODUCTS_FAILURE:
       return {
         ...state,
+        toProducts: false,
         catalog: {
           list: [],
           loading: action.payload.loading,
@@ -51,6 +55,7 @@ const products = (state = initialState, action) => {
     case GET_CART_REQUEST:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading
@@ -59,6 +64,7 @@ const products = (state = initialState, action) => {
     case GET_CART_SUCCESS:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: action.payload.products,
           loading: action.payload.loading
@@ -67,6 +73,7 @@ const products = (state = initialState, action) => {
     case GET_CART_FAILURE:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading,
@@ -76,6 +83,7 @@ const products = (state = initialState, action) => {
     case ADD_TO_CART_REQUEST:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading
@@ -84,6 +92,7 @@ const products = (state = initialState, action) => {
     case ADD_TO_CART_SUCCESS:
       return {
         ...state,
+        toProducts: false,
         cart: {
           ...action.payload
         }
@@ -91,6 +100,7 @@ const products = (state = initialState, action) => {
     case ADD_TO_CART_FAILURE:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading,
@@ -100,6 +110,7 @@ const products = (state = initialState, action) => {
     case REMOVE_FROM_CART_REQUEST:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading
@@ -108,6 +119,7 @@ const products = (state = initialState, action) => {
     case REMOVE_FROM_CART_SUCCESS:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           ...action.payload
@@ -116,6 +128,7 @@ const products = (state = initialState, action) => {
     case REMOVE_FROM_CART_FAILURE:
       return {
         ...state,
+        toProducts: false,
         cart: {
           list: [],
           loading: action.payload.loading,

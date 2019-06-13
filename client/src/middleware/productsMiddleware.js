@@ -23,6 +23,7 @@ import {
 } from "../actions/productsActions";
 import store from "../store/store";
 import { setMessage } from "../actions/messagesActions";
+import { hashHistory } from "react-router-dom";
 
 const productsMiddleware = store => next => action => {
   next(action);

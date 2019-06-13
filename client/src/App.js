@@ -11,12 +11,14 @@ import { getOrdersRequest } from "./actions/ordersActions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import store from "./store/store";
 import "./App.css";
+import RedirectContainer from "./containers/RedirectContainer";
 
 function App() {
   return (
     <Router>
       <div className="container">
-        <Header />
+        <Header onSearch={value => store.dispatch(getProductsRequest(value))} />
+        <RedirectContainer />
         <MessageContainer />
         <Route exact path="/" component={Home} />
         <Route

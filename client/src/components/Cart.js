@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import CreateOrderForm from "./CreateOrderForm";
 
 class Cart extends Component {
   render() {
@@ -31,27 +32,7 @@ class Cart extends Component {
               <p>Total: {total} USD</p>
             </div>
             <div className="col-md-4">
-              <form onSubmit={() => placeOrder()}>
-                <div className="form-group">
-                  <label htmlFor="email" required>
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email"
-                    required
-                  />
-                  <small id="emailHelp" className="form-text text-muted">
-                    Please check that the information is correct!
-                  </small>
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Complete Order
-                </button>
-              </form>
+              <CreateOrderForm placeOrder={placeOrder} />
             </div>
           </div>
         </div>
