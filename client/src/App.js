@@ -4,7 +4,6 @@ import ProductsContainer from "./containers/ProductsContainer";
 import OrdersContainer from "./containers/OrdersContainer";
 import CartContainer from "./containers/CartContainer";
 import MessageContainer from "./containers/MessageContainer";
-import Orders from "./components/Orders";
 import Home from "./components/Home";
 import { getProductsRequest, getCartRequest } from "./actions/productsActions";
 import { getOrdersRequest } from "./actions/ordersActions";
@@ -15,7 +14,7 @@ import RedirectContainer from "./containers/RedirectContainer";
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="container">
         <Header onSearch={value => store.dispatch(getProductsRequest(value))} />
         <RedirectContainer />

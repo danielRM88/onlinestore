@@ -1,0 +1,24 @@
+version: "3"
+services:
+  backend-db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: onlineshop
+    ports:
+      - "5432:5432"
+  nodejs:
+    build: ./backend/
+    depends_on:
+      - backend-db
+    environment:
+      PG_USERNAME: postgres
+      PG_PASSWORD: password
+      PG_HOSTNAME: backend-db
+      PG_PORT: 5432
+      PG_DB: onlineshop
+      NODE_ENV: development
+    ports:
+      - "4500:4500"
+    command: bash -c "./wait-for-it.sh backend-db:5432 && yarn migrate && yarn seed && yarn start"
