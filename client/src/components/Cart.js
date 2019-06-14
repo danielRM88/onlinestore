@@ -22,6 +22,7 @@ class Cart extends Component {
                       img={product.image}
                       title={product.title}
                       description={product.description}
+                      price={product.price}
                       remove={true}
                       removeFromCart={() => removeFromCart(product.id)}
                       quantity={product.quantity}

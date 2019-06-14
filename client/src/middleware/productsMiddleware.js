@@ -23,7 +23,7 @@ import {
   REMOVE_FROM_CART_REQUEST
 } from "../actions/productsActions";
 import store from "../store/store";
-import { setMessage } from "../actions/messagesActions";
+import { setMessage, removeMessage } from "../actions/messagesActions";
 
 const productsMiddleware = store => next => action => {
   next(action);
@@ -48,6 +48,9 @@ const productsMiddleware = store => next => action => {
 function getProductsMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(getProductsFailure(err.message));
   };
 
@@ -61,6 +64,9 @@ function getProductsMiddlewareAction(next, action) {
 function getCartMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(getCartFailure(err.message));
   };
 
@@ -74,11 +80,17 @@ function getCartMiddlewareAction(next, action) {
 function addToCartMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(addToCartFailure(err.message));
   };
 
   const success = response => {
     next(setMessage([response.message], "success"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(addToCartSuccess(response));
     store.dispatch(getProductsRequest());
   };
@@ -89,11 +101,17 @@ function addToCartMiddlewareAction(next, action) {
 function removeFromCartMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(removeFromCartFailure(err.message));
   };
 
   const success = response => {
     next(setMessage([response.message], "success"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(removeFromCartSuccess(response));
     store.dispatch(getCartRequest());
   };

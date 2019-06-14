@@ -14,7 +14,7 @@ import {
   GET_ORDERS_REQUEST
 } from "../actions/ordersActions";
 import store from "../store/store";
-import { setMessage } from "../actions/messagesActions";
+import { setMessage, removeMessage } from "../actions/messagesActions";
 
 const ordersMiddleware = store => next => action => {
   next(action);
@@ -33,11 +33,17 @@ const ordersMiddleware = store => next => action => {
 function createOrderMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.response.body.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(createOrderFailure(err.message));
   };
 
   const success = response => {
     next(setMessage([response.message], "success"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(createOrderSuccess(response));
     store.dispatch(getCartRequest());
   };
@@ -48,6 +54,9 @@ function createOrderMiddlewareAction(next, action) {
 function getOrdersMiddlewareAction(next, action) {
   const error = err => {
     next(setMessage([err.message], "error"));
+    setTimeout(() => {
+      next(removeMessage());
+    }, 5000);
     next(getOrdersFailure(err.message));
   };
 

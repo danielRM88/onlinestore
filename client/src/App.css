@@ -36,9 +36,7 @@
   width: 18rem;
 }
 
-.my-thumbnail {
-  width: 30vh;
-  height: 20vh;
-  display: block;
-  margin: auto;
+.thumb-post {
+  width: 100%;
+  height: auto;
 }
