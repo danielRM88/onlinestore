@@ -23,8 +23,19 @@ class Orders extends Component {
                   return (
                     <tr key={i} className="col-md-12">
                       <td>{order.email}</td>
-                      <td>{order.createdAt}</td>
-                      <td>{order.total}</td>
+                      <td>
+                        {new Intl.DateTimeFormat("en-GB", {
+                          year: "numeric",
+                          month: "long",
+                          day: "2-digit"
+                        }).format(new Date(order.createdAt))}
+                      </td>
+                      <td>
+                        {new Intl.NumberFormat("en-EU", {
+                          style: "currency",
+                          currency: "EUR"
+                        }).format(order.total)}
+                      </td>
                     </tr>
                   );
                 })}

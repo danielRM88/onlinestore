@@ -24,7 +24,13 @@ class Product extends Component {
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
               <p className="card-text">
-                <small className="text-muted">Price: {price}</small>
+                <small className="text-muted">
+                  Price:{" "}
+                  {new Intl.NumberFormat("en-EU", {
+                    style: "currency",
+                    currency: "EUR"
+                  }).format(price)}
+                </small>
               </p>
               {quantity !== undefined ? (
                 <p className="card-text">

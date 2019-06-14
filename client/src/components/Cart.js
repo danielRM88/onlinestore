@@ -30,7 +30,13 @@ class Cart extends Component {
                   </div>
                 );
               })}
-              <p>Total: {total} USD</p>
+              <p>
+                Total:{" "}
+                {new Intl.NumberFormat("en-EU", {
+                  style: "currency",
+                  currency: "EUR"
+                }).format(total)}
+              </p>
             </div>
             <div className="col-md-4">
               <CreateOrderForm placeOrder={placeOrder} />
