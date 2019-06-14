@@ -1,6 +1,6 @@
 # onlinestore
 
-## How to use start the store
+## How to start the store
 
 1. Clone the repo
 2. Go into the folder
