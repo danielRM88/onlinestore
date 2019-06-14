@@ -14,7 +14,7 @@ import RedirectContainer from "./containers/RedirectContainer";
 
 function App() {
   return (
-    <Router history={history}>
+    <Router>
       <div className="container">
         <Header onSearch={value => store.dispatch(getProductsRequest(value))} />
         <RedirectContainer />

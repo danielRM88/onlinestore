@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: onlineshop
     ports:
       - "5432:5432"
-  nodejs:
+  backend:
     build: ./backend/
     depends_on:
       - backend-db
@@ -22,3 +22,8 @@ services:
     ports:
       - "4500:4500"
     command: bash -c "./wait-for-it.sh backend-db:5432 && yarn migrate && yarn seed && yarn start"
+  client:
+    build: ./client/
+    ports:
+      - "3000:3000"
+    command: bash -c "yarn start"
